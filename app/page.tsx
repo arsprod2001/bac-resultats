@@ -236,6 +236,7 @@ export default function Home() {
       fr: 'Résultats du Bac Mauritanie',
       ar: 'نتائج البكالوريا موريتانيا'
     },
+   
     subtitle: {
       fr: 'Consultez vos résultats du Baccalauréat en ligne',
       ar: 'استعلم عن نتائج البكالوريا عبر الإنترنت'
@@ -397,6 +398,9 @@ export default function Home() {
       >
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-500">
           {translations.title[lang]}
+        </span>
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-500">
+          2024
         </span>
       </motion.h1>
 
