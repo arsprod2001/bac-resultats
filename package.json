@@ -11,9 +11,10 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^3.7.0",
     "@stripe/stripe-js": "^7.4.0",
-    "anchor-pki": "^0.3.2",
     "csvtojson": "^2.0.10",
+    "file-saver": "^2.0.5",
     "framer-motion": "^12.23.9",
+    "html-to-image": "^1.11.13",
     "lucide-react": "^0.526.0",
     "next": "15.3.5",
     "react": "^19.0.0",

@@ -1,11 +1,7 @@
-// next.config.mjs
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  // Ajoute d'autres options ici si besoin
+};
 
-import autoCert from "anchor-pki/auto-cert/integrations/next";
-
-const withAutoCert = autoCert({
-  enabledEnv: "development",
-});
-
-const nextConfig = {};
-
-export default withAutoCert(nextConfig);
+export default nextConfig;

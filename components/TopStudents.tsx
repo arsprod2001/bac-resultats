@@ -38,11 +38,9 @@ const TopStudents: React.FC<TopStudentsProps> = ({
             ? wilayaTop[selectedWilaya] || []
             : globalTop.filter(student => student.SERIE === selectedSerie).slice(0, 10);
 
-    // Déterminer le podium
     const podium = currentData.slice(0, 3);
     const otherStudents = currentData.slice(3);
 
-    // Traductions corrigées sans doublons
     const translations = {
         fr: {
             global: 'Top 10 Global',
@@ -80,7 +78,6 @@ const TopStudents: React.FC<TopStudentsProps> = ({
         }
     };
 
-    // Fonctions pour obtenir les textes selon la langue
     const getName = (student: Student) => lang === 'fr' ? student.Nom_FR : student.NOM_AR;
     const getWilaya = (student: Student) => lang === 'fr' ? student.Wilaya_FR : student.Wilaya_AR;
     const getSerie = (student: Student) => lang === 'fr' ? student.Serie_FR : student.Serie_AR;
@@ -163,7 +160,6 @@ const TopStudents: React.FC<TopStudentsProps> = ({
                 </div>
             )}
 
-            {/* Podium pour les 3 premiers */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
                 {podium.map((student, index) => (
                     <motion.div
@@ -195,7 +191,6 @@ const TopStudents: React.FC<TopStudentsProps> = ({
                 ))}
             </div>
 
-            {/* Tableau pour les écrans larges */}
             <div className="hidden md:block overflow-x-auto">
                 <table className="min-w-full divide-y divide-slate-700">
                     <thead className="bg-slate-700">
@@ -260,7 +255,6 @@ const TopStudents: React.FC<TopStudentsProps> = ({
                 </table>
             </div>
 
-            {/* Liste pour les mobiles */}
             <div className="md:hidden space-y-4">
                 {otherStudents.map((student, index) => (
                     <motion.div

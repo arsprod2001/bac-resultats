@@ -1,4 +1,3 @@
-// Créez un nouveau fichier: components/Logo.tsx
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -15,11 +14,9 @@ const Logo: React.FC = () => {
                 whileHover={{ rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
             >
-                {/* Symbole principal */}
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg">
                     <div className="absolute w-8 h-8 rounded-lg bg-white/20 backdrop-blur-sm"></div>
 
-                    {/* Icône de livre */}
                     <svg
                         className="w-6 h-6 text-white"
                         viewBox="0 0 24 24"
@@ -64,7 +61,6 @@ const Logo: React.FC = () => {
                     </svg>
                 </div>
 
-                {/* Effet de halo */}
                 <motion.div
                     className="absolute inset-0 rounded-xl bg-pink-500 blur-md opacity-30 z-[-1]"
                     animate={{
@@ -79,7 +75,6 @@ const Logo: React.FC = () => {
                 />
             </motion.div>
 
-            {/* Texte du logo - visible uniquement sur écrans larges */}
             <div className="ml-3 flex flex-col">
                 <div className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
                     ResultaBac

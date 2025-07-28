@@ -1,0 +1,9 @@
+config:
+  target: "https://bac-resultats.vercel.app"
+  phases:
+    - duration: 300     # 5 minutes
+      arrivalRate: 600  # 600 utilisateurs/sec → 180,000 utilisateurs
+scenarios:
+  - flow:
+    - get:
+        url: "/"

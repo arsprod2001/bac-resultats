@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { ArrowLeftIcon, Globe } from 'lucide-react';
 import Logo from '@/components/Logo';
 
-// Interface unique pour Student avec toutes les propriétés nécessaires
 interface Student {
     Noreg: string;
     Wilaya_FR: string;
@@ -32,7 +31,6 @@ interface Student {
     Decision: string;
 }
 
-// Types pour les statistiques
 interface WilayaStat {
     taux: number;
     moyenne: number;
