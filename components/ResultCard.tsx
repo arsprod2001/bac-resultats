@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { getMention } from '@/utils/mentionUtils';
+//import { getMention } from '@/utils/mentionUtils';
+
 
 interface Result {
   Decision: string;
@@ -35,7 +36,7 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
       ? parseFloat(result.Moy_Bac.replace(',', '.'))
       : result.Moy_Bac;
 
-  const mention = getMention(moyenne);
+  //const mention = getMention(moyenne);
 
   const translations = {
     admitted: { fr: 'Admis au Baccalauréat', ar: 'ناجح في البكالوريا' },
@@ -123,17 +124,9 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
             </div>
 
             <div className="space-y-4">
-              <motion.div
-                className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-xl p-4 border border-cyan-500/20"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.55 }}
-              >
-                <p className="text-sm font-medium text-cyan-300/80 mb-1">{translations.average[lang]}</p>
-                <p className="text-4xl font-bold text-white">{moyenne.toFixed(2)}</p>
-              </motion.div>
-
-              <motion.div
+              {/** 
+               * 
+               *  <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.6 }}
@@ -141,6 +134,9 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
                 <p className="text-sm font-medium text-cyan-300/80 mb-1">{translations.mention[lang]}</p>
                 <p className="text-lg font-semibold capitalize">{mention}</p>
               </motion.div>
+               * 
+              */}
+
 
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -149,6 +145,16 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
               >
                 <p className="text-sm font-medium text-cyan-300/80 mb-1">{translations.series[lang]}</p>
                 <p className="text-lg font-semibold">{result.SERIE}</p>
+              </motion.div>
+
+              <motion.div
+                className="bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-xl p-4 border border-cyan-500/20"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.55 }}
+              >
+                <p className="text-sm font-medium text-cyan-300/80 mb-1">{translations.average[lang]}</p>
+                <p className="text-4xl font-bold text-white">{moyenne.toFixed(2)}</p>
               </motion.div>
             </div>
           </div>
@@ -176,6 +182,8 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
           </motion.div>
         </div>
       </div>
+
+
     </motion.div>
   );
 };

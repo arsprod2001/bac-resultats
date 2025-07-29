@@ -1,3 +1,4 @@
+//app/page.tsx
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,6 +8,7 @@ import ResultCard from '@/components/ResultCard';
 import { fetchResults, searchByCriteria } from '@/data/dataService';
 import Logo from "@/components/Logo"
 import Link from 'next/link';
+
 
 
 type AdvancedCriteria = {
