@@ -3,43 +3,47 @@ const path = require('path');
 const csv = require('csvtojson');
 const xlsx = require('xlsx');
 
+// Table de correspondance des noms de colonnes (clé = alias, valeur = nom standard)
+const columnMapping = {
+  "Numéro Bac": 'Num_Bac',
+  Centre: 'Centre Examen  FR',
+  'Nom Arabe': 'NOM_AR',
+  Nom: 'NOM_FR',
+  'Lieu Naiss': 'Lieun_FR',
+  'Lieu Arabe': 'Lieun_AR',
+  MoyBac: 'Moy_Bac',
+  Decision: 'Decision',
+  'Date Naiss': 'Date Naiss',
+  Ecole: 'Etablissement_FR'
+
+};
+
 // Convertit une date Excel (numérique) en objet Date JS
 function excelDateToJSDate(serial) {
   const excelEpoch = new Date(1899, 11, 30);
-  return new Date(excelEpoch.getTime() + serial * 86400000); // 86400000 = ms par jour
+  return new Date(excelEpoch.getTime() + serial * 86400000);
 }
 
-// Essaie de convertir une valeur en Date valide
 function parseDate(value) {
   if (value === null || value === undefined || value === '') return null;
-
-  // Si c’est un nombre → Excel
   if (typeof value === 'number' && !isNaN(value)) {
     const date = excelDateToJSDate(value);
     return isNaN(date.getTime()) ? null : date;
   }
-
-  // Si c’est déjà une Date JS
-  if (value instanceof Date) {
-    return isNaN(value.getTime()) ? null : value;
-  }
-
-  // Si c’est une string → essayer avec Date.parse
+  if (value instanceof Date) return isNaN(value.getTime()) ? null : value;
   if (typeof value === 'string') {
-    const parsed = Date.parse(value.replace(/(\d{2})[\/\-](\d{2})[\/\-](\d{4})/, '$3-$2-$1')); // ex: 10/07/2004 → 2004-07-10
+    const parsed = Date.parse(value.replace(/(\d{2})[\/\-](\d{2})[\/\-](\d{4})/, '$3-$2-$1'));
     const date = new Date(parsed);
     return isNaN(date.getTime()) ? null : date;
   }
-
   return null;
 }
 
-// Formate une date en string lisible (YYYY-MM-DD)
 function formatDate(date) {
-  return date.toISOString().split('T')[0]; // YYYY-MM-DD
+  return date.toISOString().split('T')[0];
 }
 
-const inputFile = process.argv[2] || './data/RESULTATS_BAC_2024_SESSION_NORMALE.xlsx';
+const inputFile = process.argv[2] || 'bac2021.xlsx';
 const outputFile = path.join(__dirname, '../public/results.json');
 
 async function convertData() {
@@ -57,17 +61,17 @@ async function convertData() {
       throw new Error('Format de fichier non supporté. Utilisez .xlsx ou .csv');
     }
 
-    // Nettoyage + traitement des dates
     const cleanedData = jsonData.map(item => {
       const cleanedItem = {};
       for (const [key, value] of Object.entries(item)) {
-        const trimmedKey = key.trim();
+        const originalKey = key.trim();
+        const mappedKey = columnMapping[originalKey] || originalKey; // Applique le mapping si existant
 
-        if (trimmedKey.toLowerCase().includes('date')) {
+        if (mappedKey.toLowerCase().includes('date')) {
           const parsedDate = parseDate(value);
-          cleanedItem[trimmedKey] = parsedDate ? formatDate(parsedDate) : value;
+          cleanedItem[mappedKey] = parsedDate ? formatDate(parsedDate) : value;
         } else {
-          cleanedItem[trimmedKey] = typeof value === 'string' ? value.trim() : value;
+          cleanedItem[mappedKey] = typeof value === 'string' ? value.trim() : value;
         }
       }
       return cleanedItem;

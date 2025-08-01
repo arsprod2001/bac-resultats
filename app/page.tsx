@@ -387,7 +387,7 @@ export default function Home() {
               {translations.title[lang]}
             </span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-500">
-              2025
+              2024
             </span>
           </motion.h1>
 
