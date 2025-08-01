@@ -1,3 +1,4 @@
+//components/WiyalaMap
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 

@@ -1,8 +1,18 @@
-//next.config.mjs
+// next.config.mjs
+import withBundleAnalyzer from '@next/bundle-analyzer';
+
+/** Bundle Analyzer activé si ANALYZE=true */
+const withAnalyzer = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // Ajoute d'autres options ici si besoin
+  experimental: {
+    // Pour éviter les erreurs avec les fichiers JSON volumineux
+    largePageDataBytes: 128 * 1000, // 128 Ko
+  },
 };
 
-export default nextConfig;
+export default withAnalyzer(nextConfig);
