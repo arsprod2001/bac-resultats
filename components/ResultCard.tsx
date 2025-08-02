@@ -25,7 +25,7 @@ interface ResultCardProps {
 }
 
 const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
-  const isAdmitted = result.Decision === 'Admis Sn';
+  const isAdmitted = result.Decision === 'Admis(e)';
 
   const getField = (frField: keyof Result, arField: keyof Result) => {
     return lang === 'fr' ? result[frField] : result[arField];
