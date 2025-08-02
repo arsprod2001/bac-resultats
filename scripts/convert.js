@@ -5,16 +5,6 @@ const xlsx = require('xlsx');
 
 // Table de correspondance des noms de colonnes (clé = alias, valeur = nom standard)
 const columnMapping = {
-  "Numéro Bac": 'Num_Bac',
-  Centre: 'Centre Examen  FR',
-  'Nom Arabe': 'NOM_AR',
-  Nom: 'NOM_FR',
-  'Lieu Naiss': 'Lieun_FR',
-  'Lieu Arabe': 'Lieun_AR',
-  MoyBac: 'Moy_Bac',
-  Decision: 'Decision',
-  'Date Naiss': 'Date Naiss',
-  Ecole: 'Etablissement_FR'
 
 };
 
@@ -43,7 +33,7 @@ function formatDate(date) {
   return date.toISOString().split('T')[0];
 }
 
-const inputFile = process.argv[2] || 'bac2021.xlsx';
+const inputFile = process.argv[2] || 'FICHIER_RESULTATS_BAC_2025_53148.xlsx';
 const outputFile = path.join(__dirname, '../public/results.json');
 
 async function convertData() {

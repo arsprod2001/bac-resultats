@@ -41,10 +41,10 @@ function calculateStats() {
     totalMoyenne += moyenne;
     moyennes.push(moyenne);
 
-    if (result.Decision === 'Admis Sn') {
+    if (result.Decision === 'Admis(e)') {
       stats.global.admis++;
       totalMoyenneAdmis += moyenne;
-    } else if (result.Decision === 'Ajourné Sn') {
+    } else if (result.Decision === 'Ajourné(e)') {
       stats.global.ajournes++;
     } else if (result.Decision === 'Sessionnaire') {
       stats.global.sessionnaires++;
@@ -56,7 +56,7 @@ function calculateStats() {
       stats.parSerie[serie] = { total: 0, admis: 0, taux: 0 };
     }
     stats.parSerie[serie].total++;
-    if (result.Decision === 'Admis Sn') stats.parSerie[serie].admis++;
+    if (result.Decision === 'Admis(e)') stats.parSerie[serie].admis++;
 
     // Par wilaya
     const wilaya = result.Wilaya_FR;
@@ -71,7 +71,7 @@ function calculateStats() {
     }
     stats.parWilaya[wilaya].total++;
     stats.parWilaya[wilaya].moyennes.push(moyenne);
-    if (result.Decision === 'Admis Sn') stats.parWilaya[wilaya].admis++;
+    if (result.Decision === 'Admis(e)') stats.parWilaya[wilaya].admis++;
 
     // Par établissement
     const etablissement = result.Etablissement_FR;
@@ -92,7 +92,7 @@ function calculateStats() {
     if (moyenne > stats.parEtablissement[etablissement].max) {
       stats.parEtablissement[etablissement].max = moyenne;
     }
-    if (result.Decision === 'Admis Sn') stats.parEtablissement[etablissement].admis++;
+    if (result.Decision === 'Admis(e)') stats.parEtablissement[etablissement].admis++;
 
     // Par centre d'examen
     const centre = result["Centre Examen  FR"];
@@ -100,7 +100,7 @@ function calculateStats() {
       stats.parCentre[centre] = { total: 0, admis: 0 };
     }
     stats.parCentre[centre].total++;
-    if (result.Decision === 'Admis Sn') stats.parCentre[centre].admis++;
+    if (result.Decision === 'Admis(e)') stats.parCentre[centre].admis++;
   });
 
   // Moyennes globales et écart-type

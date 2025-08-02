@@ -72,8 +72,6 @@ export default function Home() {
 
   const [isClient, setIsClient] = useState(false);
 
-
-
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -387,7 +385,7 @@ export default function Home() {
               {translations.title[lang]}
             </span>
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-blue-500">
-              2024
+              2025
             </span>
           </motion.h1>
 
@@ -780,3 +778,5 @@ export default function Home() {
     </div >
   );
 }
+
+

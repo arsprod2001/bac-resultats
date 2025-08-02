@@ -124,20 +124,6 @@ const ResultCard: React.FC<ResultCardProps> = ({ result, lang }) => {
             </div>
 
             <div className="space-y-4">
-              {/** 
-               * 
-               *  <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <p className="text-sm font-medium text-cyan-300/80 mb-1">{translations.mention[lang]}</p>
-                <p className="text-lg font-semibold capitalize">{mention}</p>
-              </motion.div>
-               * 
-              */}
-
-
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
