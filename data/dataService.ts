@@ -1,7 +1,6 @@
 // data/dataService.ts
 
 export interface ResultItem {
-  Noreg: string;
   Wilaya_FR: string;
   Wilaya_AR: string;
   "Centre Examen  FR": string;
@@ -10,9 +9,6 @@ export interface ResultItem {
   Etablissement_AR: string;
   Num_Bac: string;
   SERIE: string;
-  Serie_FR: string;
-  Serie_AR: string;
-  NNI: string;
   Nom_FR: string;
   NOM_AR: string;
   Lieun_FR: string;
